@@ -23,6 +23,7 @@ function is_admin() {
             <a href="adauga_anunt.php">Adaugă Anunț</a> |
             <a href="modifica_anunt.php">Modifică Anunț</a> |
             <a href="sterge_anunt.php">Șterge Anunț</a> |
+            <a href="profesori.php">Gestionează Profesori</a> |
             <?php if (is_admin()): ?>
                 <a href="users.php">Gestionează Utilizatori</a> |
             <?php endif; ?>
