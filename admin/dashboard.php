@@ -36,7 +36,18 @@ function is_admin() {
         if ($res && mysqli_num_rows($res) > 0) {
             echo '<ul>';
             while ($r = mysqli_fetch_assoc($res)) {
-                echo '<li><strong>'.htmlspecialchars($r['titlu'], ENT_QUOTES,'UTF-8')."</strong> (".htmlspecialchars($r['data_publicare'],ENT_QUOTES,'UTF-8').") - de: ".htmlspecialchars($r['username'] ?? 'anonim',ENT_QUOTES,'UTF-8').'</li>';
+                $id = (int)$r['id_anunt'];
+                $title = htmlspecialchars($r['titlu'], ENT_QUOTES,'UTF-8');
+                $date = htmlspecialchars($r['data_publicare'],ENT_QUOTES,'UTF-8');
+                $author = htmlspecialchars($r['username'] ?? 'anonim',ENT_QUOTES,'UTF-8');
+                echo '<li><strong>'.$title.'</strong> ('.$date.') - de: '.$author;
+                // edit link for admin and editor
+                echo ' - <a href="modifica_anunt.php?id='.$id.'">Modifică</a>';
+                // delete link only for admin
+                if (is_admin()) {
+                    echo ' | <a href="sterge_anunt.php?id='.$id.'" onclick="return confirm(\'Ștergi anunț?\')">Șterge</a>';
+                }
+                echo '</li>';
             }
             echo '</ul>';
         } else {
