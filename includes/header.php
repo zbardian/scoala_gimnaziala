@@ -20,6 +20,7 @@ if(!defined('PROJECT_INIT')) {
                 <a href="/anunturi.php">Anunțuri</a>
                 <a href="/profesori.php">Profesori</a>
                 <a href="/contact.php">Contact</a>
+                <a href="/admin/login.php">Panou Admin</a>
             </nav>
         </div>
     </header>
