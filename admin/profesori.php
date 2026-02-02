@@ -8,6 +8,44 @@ if (!isset($_SESSION['role']) || !in_array($_SESSION['role'], ['admin','editor']
 $errors = [];
 $success = '';
 
+// edit flow
+$editing = false;
+$edit_prof = null;
+if (isset($_GET['edit'])) {
+    $editing = true;
+    $id_edit = intval($_GET['edit']);
+    $stmt = mysqli_prepare($conn, 'SELECT id_profesor, nume, disciplina, email FROM profesori WHERE id_profesor = ? LIMIT 1');
+    mysqli_stmt_bind_param($stmt, 'i', $id_edit);
+    mysqli_stmt_execute($stmt);
+    $res = mysqli_stmt_get_result($stmt);
+    $edit_prof = mysqli_fetch_assoc($res);
+    mysqli_stmt_close($stmt);
+    if (!$edit_prof) {
+        $errors[] = 'Profesor inexistent.';
+        $editing = false;
+    }
+}
+
+// update profesor
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['update'])) {
+    $id = intval($_POST['id_profesor'] ?? 0);
+    $nume = trim($_POST['nume'] ?? '');
+    $disciplina = trim($_POST['disciplina'] ?? '');
+    $email = trim($_POST['email'] ?? '');
+    if ($nume === '' || $disciplina === '') $errors[] = 'Completați nume și disciplină.';
+    if (empty($errors)) {
+        $stmt = mysqli_prepare($conn, 'UPDATE profesori SET nume = ?, disciplina = ?, email = ? WHERE id_profesor = ? LIMIT 1');
+        mysqli_stmt_bind_param($stmt, 'sssi', $nume, $disciplina, $email, $id);
+        if (mysqli_stmt_execute($stmt)) {
+            $success = 'Profesor actualizat.';
+            // refresh list and reset edit mode
+            $editing = false;
+            $edit_prof = null;
+        } else { $errors[] = 'Eroare la actualizare.'; }
+        mysqli_stmt_close($stmt);
+    }
+}
+
 // create profesor
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['create'])) {
     $nume = trim($_POST['nume'] ?? '');
@@ -54,18 +92,34 @@ if ($res) while($p = mysqli_fetch_assoc($res)) $profesori[] = $p;
         <?php if ($success) echo '<p style="color:green">'.htmlspecialchars($success,ENT_QUOTES,'UTF-8').'</p>'; ?>
         <?php if ($errors) echo '<p style="color:red">'.htmlspecialchars(implode("; ",$errors),ENT_QUOTES,'UTF-8').'</p>'; ?>
 
-        <h2>Adaugă profesor</h2>
-        <form method="post">
-            <label>Nume:<br><input name="nume" required></label><br><br>
-            <label>Disciplina:<br><input name="disciplina" required></label><br><br>
-            <label>Email:<br><input name="email" type="email"></label><br><br>
-            <button name="create" type="submit">Adaugă</button>
-        </form>
+        <?php if ($editing && $edit_prof): ?>
+            <h2>Modifică profesor</h2>
+            <form method="post">
+                <input type="hidden" name="id_profesor" value="<?php echo (int)$edit_prof['id_profesor']; ?>">
+                <label>Nume:<br><input name="nume" required value="<?php echo htmlspecialchars($edit_prof['nume'],ENT_QUOTES,'UTF-8'); ?>"></label><br><br>
+                <label>Disciplina:<br><input name="disciplina" required value="<?php echo htmlspecialchars($edit_prof['disciplina'],ENT_QUOTES,'UTF-8'); ?>"></label><br><br>
+                <label>Email:<br><input name="email" type="email" value="<?php echo htmlspecialchars($edit_prof['email'],ENT_QUOTES,'UTF-8'); ?>"></label><br><br>
+                <button name="update" type="submit">Salvează modificările</button>
+                <a href="profesori.php">Anulează</a>
+            </form>
+        <?php else: ?>
+            <h2>Adaugă profesor</h2>
+            <form method="post">
+                <label>Nume:<br><input name="nume" required></label><br><br>
+                <label>Disciplina:<br><input name="disciplina" required></label><br><br>
+                <label>Email:<br><input name="email" type="email"></label><br><br>
+                <button name="create" type="submit">Adaugă</button>
+            </form>
+        <?php endif; ?>
 
         <h2>Lista profesorilor</h2>
         <ul>
         <?php foreach($profesori as $p): ?>
-            <li><?php echo htmlspecialchars($p['nume'],ENT_QUOTES,'UTF-8'); ?> - <?php echo htmlspecialchars($p['disciplina'],ENT_QUOTES,'UTF-8'); ?> - <?php echo htmlspecialchars($p['email'],ENT_QUOTES,'UTF-8'); ?> - <?php if ($_SESSION['role'] === 'admin') { ?> <a href="?delete=<?php echo $p['id_profesor']; ?>" onclick="return confirm('Ștergi profesor?')">Șterge</a> <?php } ?></li>
+            <li>
+                <?php echo htmlspecialchars($p['nume'],ENT_QUOTES,'UTF-8'); ?> - <?php echo htmlspecialchars($p['disciplina'],ENT_QUOTES,'UTF-8'); ?> - <?php echo htmlspecialchars($p['email'],ENT_QUOTES,'UTF-8'); ?>
+                - <a href="?edit=<?php echo $p['id_profesor']; ?>">Modifică</a>
+                <?php if ($_SESSION['role'] === 'admin') { ?> | <a href="?delete=<?php echo $p['id_profesor']; ?>" onclick="return confirm('Ștergi profesor?')">Șterge</a> <?php } ?>
+            </li>
         <?php endforeach; ?>
         </ul>
 
