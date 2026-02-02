@@ -1,0 +1,8 @@
+# Ignore local nginx/proxy config files
+/proxy_include_sg.conf
+/proxy_sg.conf
+/scoala_nginx.conf
+
+# Optional: ignore any other local config files
+*.conf.local
+.env
