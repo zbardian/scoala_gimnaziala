@@ -1,8 +1,8 @@
 <?php
 // Config conexiune DB (folosește variabile de mediu dacă sunt setate)
 $servername = getenv('DB_HOST') ?: 'localhost';
-$username   = getenv('DB_USER') ?: 'root';
-$password   = getenv('DB_PASS') ?: '';
+$username   = getenv('DB_USER') ?: 'scoala_user';
+$password   = getenv('DB_PASS') ?: 'ParolaTare123';
 $dbname     = getenv('DB_NAME') ?: 'scoala_gimnaziala';
 
 // Mediu: 'production' sau 'development'
