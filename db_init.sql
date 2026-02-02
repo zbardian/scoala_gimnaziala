@@ -38,8 +38,15 @@ INSERT INTO profesori (nume, disciplina, email) VALUES
 ('Popescu Ion', 'Matematica', 'ion.popescu@example.com'),
 ('Ionescu Maria', 'Limba Română', 'maria.ionescu@example.com');
 
+-- Seed utilizator admin
+-- NOTE: The following hash is an example bcrypt hash. Replace it with a secure hash generated on your machine
+-- using PHP's password_hash() before deploying to production. Example PHP to generate a hash:
+-- <?php
+-- echo password_hash('YourStrongPasswordHere', PASSWORD_DEFAULT);
+-- ?>
+-- Example (demo) password: "password" -> example bcrypt hash below. Change immediately after install.
 INSERT INTO utilizatori (username, parola, rol) VALUES
-('admin', '$2y$10$examplehashplaceholder...', 'admin');
+('admin', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'admin');
 
 INSERT INTO anunturi (titlu, continut, data_publicare, id_utilizator) VALUES
 ('Deschiderea anului școlar', 'Anunț: deschiderea noului an școlar va avea loc pe 1 septembrie.', '2026-09-01', 1),
