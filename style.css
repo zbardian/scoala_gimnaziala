@@ -41,32 +41,87 @@ p { color:#344054; }
 /* Footer */
 footer { background:var(--accent); color:#fff; text-align:center; padding:12px 0; position:static; }
 
-/* Admin panel (basic, stable) */
-.admin-layout { display:flex; gap:18px; align-items:flex-start; }
-.admin-sidebar { width:220px; background:#fbfdff; border:1px solid #e6eefc; padding:12px; border-radius:8px; }
-.admin-sidebar h3 { margin-top:0; }
-.admin-sidebar a { display:block; color:var(--text); text-decoration:none; margin:8px 0; font-weight:600; }
-.admin-sidebar a:hover { color:var(--accent); }
-.admin-content { flex:1; }
-.stats-row { display:flex; gap:12px; margin:8px 0 16px; flex-wrap:wrap; }
-.stat-card { background:#fff; border:1px solid #eef6ff; padding:12px; border-radius:8px; min-width:120px; text-align:center; }
+/* Admin panel (improved, scoped) */
+.admin-layout {
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+    width: 100%;
+}
 
+.admin-sidebar {
+    width: 220px;
+    background: #fbfdff;
+    border: 1px solid #e6eefc;
+    padding: 14px;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(11,35,71,0.03);
+    position: relative;
+}
+
+/* Make sidebar sticky on larger viewports */
+@media (min-width: 801px) {
+    .admin-sidebar { position: sticky; top: 20px; height: fit-content; }
+}
+
+.admin-sidebar h3 { margin-top:0; font-size:16px; }
+.admin-sidebar a {
+    display:block;
+    color:var(--text);
+    text-decoration:none;
+    margin:8px 0;
+    font-weight:600;
+    padding:6px 8px;
+    border-radius:6px;
+}
+.admin-sidebar a:hover, .admin-sidebar a:focus {
+    color: var(--accent);
+    background: rgba(0,115,230,0.06);
+    outline: none;
+}
+
+.admin-content { flex:1; background:transparent; padding:4px 0; }
+
+.stats-row { display:flex; gap:12px; margin:12px 0 18px 0; flex-wrap:wrap; }
+.stat-card {
+    background:#ffffff;
+    border:1px solid #eef6ff;
+    padding:12px 16px;
+    border-radius:8px;
+    min-width:120px;
+    text-align:center;
+    box-shadow:0 6px 18px rgba(10,30,80,0.03);
+}
+.stat-card h3 { margin:0; font-size:20px; color:var(--accent); }
+.stat-card p { margin:6px 0 0; color:var(--muted); font-size:13px; }
+
+/* Announcements list - clearer layout */
 .announcements { list-style:none; padding:0; margin:0; }
-.announcement-item { display:flex; justify-content:space-between; align-items:center; padding:10px 0; border-bottom:1px dashed #eef6ff; }
+.announcement-item {
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:12px;
+    border-radius:8px;
+    background: #fff;
+    border:1px solid #f0f6ff;
+    margin-bottom:10px;
+}
+.announcement-item > div:first-child { max-width:72%; }
 .announcement-meta { color:var(--muted); font-size:13px; margin-top:6px; }
-.announcement-actions { display:flex; gap:8px; }
-.btn { display:inline-block; padding:6px 10px; border-radius:6px; text-decoration:none; font-weight:600; }
-.btn-edit { background:#e6f2ff; color:var(--accent); border:1px solid #cfe6ff; }
-.btn-delete { background:#fff5f5; color:#b00020; border:1px solid #ffdede; }
+.announcement-actions { display:flex; gap:8px; align-items:center; }
 
-/* Messages */
-.errors { color:#b00020; }
-.success { color:#006600; }
+/* Scope button styles to admin content to avoid affecting frontend */
+.admin-content .btn { display:inline-block; padding:7px 12px; border-radius:6px; text-decoration:none; font-weight:600; font-size:14px; }
+.admin-content .btn-edit { background:#e6f2ff; color:var(--accent); border:1px solid #cfe6ff; }
+.admin-content .btn-delete { background:#fff5f5; color:#b00020; border:1px solid #ffdede; }
+.admin-content .btn:active { transform:translateY(1px); }
 
-/* Responsive */
+/* Small screens: stack sidebar above content */
 @media (max-width:800px) {
     .admin-layout { flex-direction:column; }
-    .admin-sidebar { width:100%; }
-    .main-nav { justify-content:center; }
-    main.container { margin:12px; padding:16px; }
+    .admin-sidebar { width:100%; position:relative; }
+    .announcement-item { flex-direction:column; align-items:flex-start; }
+    .announcement-item > div:first-child { max-width:100%; }
+    .announcement-actions { margin-top:8px; }
 }
