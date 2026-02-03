@@ -20,7 +20,7 @@ function is_admin() {
         <h1>Panou Administrare</h1>
         <p>Bine ai venit, <?php echo htmlspecialchars($_SESSION['username'], ENT_QUOTES, 'UTF-8'); ?>!</p>
         <nav>
-            <a href="index.php">Pagina principală</a> |
+            <a href="/sg/index.php">Pagina principală</a> |
             <a href="adauga_anunt.php">Adaugă Anunț</a> |
             <a href="modifica_anunt.php">Modifică Anunț</a> |
             <a href="sterge_anunt.php">Șterge Anunț</a> |
