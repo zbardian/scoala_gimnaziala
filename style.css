@@ -217,3 +217,25 @@ ul.admin-list li { display:flex; align-items:center; gap:12px; padding:10px; bor
 .site-header h1 { color: #ffffff; margin:0; }
 .site-header .main-nav a { color: #ffffff; margin: 0 12px; text-decoration: none; font-weight: 600; }
 .site-header .main-nav a:hover, .site-header .main-nav a:focus { text-decoration: underline; color: #ffffff; outline: 3px solid rgba(255,255,255,0.08); outline-offset: 3px; }
+
+/* Front page / main content link and heading styles */
+.container a {
+    color: var(--accent-color);
+    text-decoration: none;
+}
+.container a:hover, .container a:focus {
+    text-decoration: underline;
+    outline: none;
+}
+.container h2, .container h3 {
+    color: var(--accent-color);
+}
+
+/* Make announcement links on front page match admin announcement style */
+section a, .announcements a {
+    color: var(--accent-color);
+    text-decoration: none;
+}
+section a:hover, .announcements a:hover {
+    text-decoration: underline;
+}
