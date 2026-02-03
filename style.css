@@ -1,4 +1,4 @@
-:root { --accent-color: #0f766e; }
+:root { --accent-color: #1b2733; }
 
 body {
     font-family: Arial, sans-serif;
@@ -144,10 +144,15 @@ footer {
     box-shadow: 0 6px 18px rgba(11,92,183,0.12);
 }
 .admin-sidebar h3 { margin:0 0 12px; font-size:18px; }
-.admin-sidebar a { display:block; color:#e7f1ff; padding:8px 10px; text-decoration:none; border-radius:6px; margin-bottom:6px; }
-.admin-sidebar a:hover { background: rgba(255,255,255,0.06); color:#fff; }
+.admin-sidebar a { display:block; color:#ffffff; padding:10px 12px; text-decoration:none; border-radius:8px; margin-bottom:8px; font-weight:700; font-size:15px; text-shadow: 0 1px 2px rgba(0,0,0,0.25); }
+.admin-sidebar a:hover { background: rgba(255,255,255,0.10); color:#fff; }
+.admin-sidebar a:active { background: rgba(255,255,255,0.12); }
+.admin-sidebar a:focus { outline: 3px solid rgba(255,255,255,0.18); outline-offset:2px; }
 
-.admin-content { }
+/* active link accent */
+.admin-sidebar a.active { background: rgba(255,255,255,0.12); box-shadow: inset 3px 0 0 rgba(255,255,255,0.08); }
+
+.admin-content { padding: 0 8px; /* main content area; kept for layout but no empty rules warning removed by adding comment */ }
 .container { max-width:1100px; margin:28px auto; padding:0 18px; }
 
 /* Card improvements */
