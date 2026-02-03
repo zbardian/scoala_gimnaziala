@@ -127,8 +127,46 @@ footer {
 /* Avoid large translate on hover so layout doesn't jump */
 .btn:hover { transform: translateY(-1px); box-shadow: 0 6px 12px rgba(10,50,100,0.06); }
 
-@media (max-width:700px) {
-    .stat-card { min-width:120px; }
-    .announcement-item { flex-direction:column; align-items:stretch; }
-    .announcement-actions { justify-content:flex-start; margin-top: 8px; }
+/* Admin layout: sidebar + content */
+.admin-layout {
+    display: grid;
+    grid-template-columns: 220px 1fr;
+    gap: 20px;
+    align-items: start;
+}
+.admin-sidebar {
+    background: linear-gradient(180deg,#0d6efd,#0b5ed7);
+    color: #fff;
+    padding: 16px;
+    border-radius: 10px;
+    box-shadow: 0 6px 18px rgba(11,92,183,0.12);
+}
+.admin-sidebar h3 { margin:0 0 12px; font-size:18px; }
+.admin-sidebar a { display:block; color:#e7f1ff; padding:8px 10px; text-decoration:none; border-radius:6px; margin-bottom:6px; }
+.admin-sidebar a:hover { background: rgba(255,255,255,0.06); color:#fff; }
+
+.admin-content { }
+.container { max-width:1100px; margin:28px auto; padding:0 18px; }
+
+/* Card improvements */
+.stat-card { padding:16px 18px; min-width:140px; }
+
+/* Announcement item tweak for visual separation */
+.announcement-item { border-left:4px solid transparent; }
+.announcement-item:nth-child(odd) { background: linear-gradient(180deg,#ffffff,#fbfdff); }
+.announcement-item:nth-child(1) { border-left-color: #0d6efd; }
+
+/* Form card spacing */
+.stat-card form label input, .stat-card form textarea, .stat-card form select { width:100%; padding:8px; border:1px solid #dbe7ff; border-radius:6px; box-sizing:border-box; }
+
+/* Subtle headings */
+h1 { font-size:24px; color:#073763; margin-bottom:6px; }
+h2 { color:#145388; margin-top:18px; }
+
+/* Small utilities */
+.kv { color:#6b7280; font-size:13px; }
+
+@media (max-width:900px) {
+    .admin-layout { grid-template-columns: 1fr; }
+    .admin-sidebar { order:2; }
 }

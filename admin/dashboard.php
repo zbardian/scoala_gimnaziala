@@ -19,15 +19,19 @@ function is_admin() {
     <main class="container">
         <h1>Panou Administrare</h1>
         <p>Bine ai venit, <?php echo htmlspecialchars($_SESSION['username'], ENT_QUOTES, 'UTF-8'); ?>!</p>
-        <nav class="admin-nav">
-            <a href="/sg/index.php">Pagina principală</a>
-            <a href="adauga_anunt.php">Adaugă Anunț</a>
-            <a href="profesori.php">Gestionează Profesori</a>
-            <?php if (is_admin()): ?>
-                <a href="users.php">Gestionează Utilizatori</a>
-            <?php endif; ?>
-            <a href="logout.php">Deconectare</a>
-        </nav>
+        <div class="admin-layout">
+            <aside class="admin-sidebar">
+                <h3>Panou</h3>
+                <a href="/sg/index.php">Pagina principală</a>
+                <a href="adauga_anunt.php">Adaugă Anunț</a>
+                <a href="profesori.php">Gestionează Profesori</a>
+                <?php if (is_admin()): ?>
+                    <a href="users.php">Gestionează Utilizatori</a>
+                <?php endif; ?>
+                <a href="logout.php">Deconectare</a>
+            </aside>
+
+            <div class="admin-content">
 
         <div class="stats-row">
             <div class="stat-card">
@@ -77,6 +81,9 @@ function is_admin() {
             echo '<p>Nu există anunțuri.</p>';
         }
         ?>
+
+            </div> <!-- .admin-content -->
+        </div> <!-- .admin-layout -->
     </main>
 </body>
 </html>
