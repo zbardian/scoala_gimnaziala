@@ -250,3 +250,45 @@ section a:hover, .announcements a:hover {
     outline: 3px solid rgba(13,110,253,0.10);
     outline-offset: 2px;
 }
+
+/* Presentation / Frontpage styles */
+.hero {
+    background: linear-gradient(135deg, rgba(15,118,110,0.06), rgba(13,110,253,0.06));
+    padding: 48px 18px;
+    border-radius: 12px;
+    margin: 18px 0 28px;
+    display:flex;
+    gap:20px;
+    align-items:center;
+}
+.hero .hero-content {
+    max-width:760px;
+}
+.hero h2 { font-size:32px; margin:0 0 8px; color: var(--accent-color); }
+.hero p.lead { font-size:18px; color:#324048; margin:0 0 14px; }
+.cta-row { display:flex; gap:12px; align-items:center; }
+.cta-button {
+    background: var(--accent-color);
+    color: #fff;
+    padding: 10px 16px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight:700;
+}
+.cta-button.secondary { background: #f1f5f9; color: var(--accent-color); border:1px solid #e2e8f0; }
+
+.section-cards { display:grid; grid-template-columns: repeat(auto-fit,minmax(220px,1fr)); gap:16px; margin-top:18px; }
+.section-card { background:#fff; padding:16px; border-radius:10px; border:1px solid #eef2f7; box-shadow: 0 6px 18px rgba(8,20,40,0.03); }
+.section-card h3 { margin:0 0 8px; color:var(--accent-color); }
+.section-card p { margin:0; color:#475569; }
+
+/* Make site header and footer consistent */
+.site-header { padding: 22px 0; }
+.site-header .container { display:flex; align-items:center; justify-content:space-between; gap:12px; }
+.site-header h1 { font-size:20px; margin:0; color:#fff; }
+.site-footer { padding:18px 0; margin-top:36px; background:linear-gradient(180deg,#06305a,#04263f); color:#fff; }
+
+@media (max-width:800px) {
+    .hero { flex-direction:column; align-items:flex-start; }
+    .site-header .container { flex-direction:column; align-items:flex-start; }
+}
