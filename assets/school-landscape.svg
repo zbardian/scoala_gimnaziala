@@ -12,7 +12,7 @@
     <rect x="30" y="100" width="50" height="60" fill="#7aa2ff" />
     <rect x="140" y="100" width="50" height="60" fill="#7aa2ff" />
     <path d="M-10 70 L110 0 L230 70 Z" fill="#7aa2ff" />
-    <text x="70" y="150" font-family="Arial" font-size="18" fill="#073763">Școala Gimnazială</text>
+    <text x="110" y="155" font-family="Arial" font-size="16" fill="#073763" text-anchor="middle" font-weight="700">Școala Gimnazială</text>
   </g>
   <!-- trees -->
   <g fill="#2f855a">
