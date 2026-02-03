@@ -21,7 +21,7 @@ function is_admin() {
         <p>Bine ai venit, <?php echo htmlspecialchars($_SESSION['username'], ENT_QUOTES, 'UTF-8'); ?>!</p>
         <div class="admin-layout">
             <aside class="admin-sidebar">
-                <h3>Panou</h3>
+                <h3><a>Panou</a></h3>
                 <a href="/sg/index.php">Pagina principală</a>
                 <a href="adauga_anunt.php">Adaugă Anunț</a>
                 <a href="profesori.php">Gestionează Profesori</a>
