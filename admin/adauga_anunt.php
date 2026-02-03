@@ -39,15 +39,21 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 </head>
 <body>
     <main class="container">
+        <nav class="admin-nav">
+            <a href="dashboard.php">Înapoi la Panou</a>
+            <a href="/sg/index.php">Pagina principală</a>
+        </nav>
         <h1>Adaugă Anunț</h1>
-        <?php if ($error) echo '<p style="color:red">'.htmlspecialchars($error,ENT_QUOTES,'UTF-8').'</p>'; ?>
-        <form method="post">
-            <label>Titlu:<br><input name="titlu" required></label><br><br>
-            <label>Conținut:<br><textarea name="continut" rows="8" required></textarea></label><br><br>
-            <label>Data publicare:<br><input type="date" name="data_publicare" value="<?php echo date('Y-m-d'); ?>"></label><br><br>
-            <button type="submit">Salvează</button>
-        </form>
-        <p><a href="dashboard.php">Înapoi</a></p>
+        <?php if ($error) echo '<p class="errors">'.htmlspecialchars($error,ENT_QUOTES,'UTF-8').'</p>'; ?>
+        <div class="stat-card">
+            <form method="post">
+                <label>Titlu:<br><input name="titlu" required></label><br><br>
+                <label>Conținut:<br><textarea name="continut" rows="8" required></textarea></label><br><br>
+                <label>Data publicare:<br><input type="date" name="data_publicare" value="<?php echo date('Y-m-d'); ?>"></label><br><br>
+                <button class="btn btn-edit" type="submit">Salvează</button>
+                <a class="btn" href="dashboard.php">Anulează</a>
+            </form>
+        </div>
     </main>
 </body>
 </html>

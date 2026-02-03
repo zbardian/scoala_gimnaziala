@@ -88,10 +88,15 @@ if ($res) while($p = mysqli_fetch_assoc($res)) $profesori[] = $p;
 </head>
 <body>
     <main class="container">
+        <nav class="admin-nav">
+            <a href="dashboard.php">Înapoi la Panou</a>
+            <a href="/sg/index.php">Pagina principală</a>
+        </nav>
         <h1>Profesori</h1>
-        <?php if ($success) echo '<p style="color:green">'.htmlspecialchars($success,ENT_QUOTES,'UTF-8').'</p>'; ?>
-        <?php if ($errors) echo '<p style="color:red">'.htmlspecialchars(implode("; ",$errors),ENT_QUOTES,'UTF-8').'</p>'; ?>
+        <?php if ($success) echo '<p class="success">'.htmlspecialchars($success,ENT_QUOTES,'UTF-8').'</p>'; ?>
+        <?php if ($errors) echo '<p class="errors">'.htmlspecialchars(implode("; ",$errors),ENT_QUOTES,'UTF-8').'</p>'; ?>
 
+        <div class="stat-card">
         <?php if ($editing && $edit_prof): ?>
             <h2>Modifică profesor</h2>
             <form method="post">
@@ -99,8 +104,8 @@ if ($res) while($p = mysqli_fetch_assoc($res)) $profesori[] = $p;
                 <label>Nume:<br><input name="nume" required value="<?php echo htmlspecialchars($edit_prof['nume'],ENT_QUOTES,'UTF-8'); ?>"></label><br><br>
                 <label>Disciplina:<br><input name="disciplina" required value="<?php echo htmlspecialchars($edit_prof['disciplina'],ENT_QUOTES,'UTF-8'); ?>"></label><br><br>
                 <label>Email:<br><input name="email" type="email" value="<?php echo htmlspecialchars($edit_prof['email'],ENT_QUOTES,'UTF-8'); ?>"></label><br><br>
-                <button name="update" type="submit">Salvează modificările</button>
-                <a href="profesori.php">Anulează</a>
+                <button class="btn btn-edit" name="update" type="submit">Salvează modificările</button>
+                <a class="btn" href="profesori.php">Anulează</a>
             </form>
         <?php else: ?>
             <h2>Adaugă profesor</h2>
@@ -108,17 +113,18 @@ if ($res) while($p = mysqli_fetch_assoc($res)) $profesori[] = $p;
                 <label>Nume:<br><input name="nume" required></label><br><br>
                 <label>Disciplina:<br><input name="disciplina" required></label><br><br>
                 <label>Email:<br><input name="email" type="email"></label><br><br>
-                <button name="create" type="submit">Adaugă</button>
+                <button class="btn btn-edit" name="create" type="submit">Adaugă</button>
             </form>
         <?php endif; ?>
+        </div>
 
         <h2>Lista profesorilor</h2>
         <ul>
         <?php foreach($profesori as $p): ?>
             <li>
                 <?php echo htmlspecialchars($p['nume'],ENT_QUOTES,'UTF-8'); ?> - <?php echo htmlspecialchars($p['disciplina'],ENT_QUOTES,'UTF-8'); ?> - <?php echo htmlspecialchars($p['email'],ENT_QUOTES,'UTF-8'); ?>
-                - <a href="?edit=<?php echo $p['id_profesor']; ?>">Modifică</a>
-                <?php if ($_SESSION['role'] === 'admin') { ?> | <a href="?delete=<?php echo $p['id_profesor']; ?>" onclick="return confirm('Ștergi profesor?')">Șterge</a> <?php } ?>
+                - <a class="btn btn-edit" href="?edit=<?php echo $p['id_profesor']; ?>">Modifică</a>
+                <?php if ($_SESSION['role'] === 'admin') { ?> | <a class="btn btn-delete" href="?delete=<?php echo $p['id_profesor']; ?>" onclick="return confirm('Ștergi profesor?')">Șterge</a> <?php } ?>
             </li>
         <?php endforeach; ?>
         </ul>

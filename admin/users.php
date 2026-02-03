@@ -115,10 +115,15 @@ if ($res) while($u = mysqli_fetch_assoc($res)) $users[] = $u;
 </head>
 <body>
     <main class="container">
+        <nav class="admin-nav">
+            <a href="dashboard.php">Înapoi la Panou</a>
+            <a href="/sg/index.php">Pagina principală</a>
+        </nav>
         <h1>Utilizatori</h1>
-        <?php if ($success) echo '<p style="color:green">'.htmlspecialchars($success,ENT_QUOTES,'UTF-8').'</p>'; ?>
-        <?php if ($errors) echo '<p style="color:red">'.htmlspecialchars(implode("; ",$errors),ENT_QUOTES,'UTF-8').'</p>'; ?>
+        <?php if ($success) echo '<p class="success">'.htmlspecialchars($success,ENT_QUOTES,'UTF-8').'</p>'; ?>
+        <?php if ($errors) echo '<p class="errors">'.htmlspecialchars(implode("; ",$errors),ENT_QUOTES,'UTF-8').'</p>'; ?>
 
+        <div class="stat-card">
         <?php if ($editing && $edit_user): ?>
             <h2>Modifică utilizator</h2>
             <form method="post">
@@ -131,8 +136,8 @@ if ($res) while($u = mysqli_fetch_assoc($res)) $users[] = $u;
                         <option value="admin" <?php echo $edit_user['rol']==='admin' ? 'selected' : ''; ?>>Administrator</option>
                     </select>
                 </label><br><br>
-                <button name="update" type="submit">Salvează</button>
-                <a href="users.php">Anulează</a>
+                <button class="btn btn-edit" name="update" type="submit">Salvează</button>
+                <a class="btn" href="users.php">Anulează</a>
             </form>
         <?php else: ?>
             <h2>Creare utilizator</h2>
@@ -145,17 +150,18 @@ if ($res) while($u = mysqli_fetch_assoc($res)) $users[] = $u;
                         <option value="admin">Administrator (drepturi complete)</option>
                     </select>
                 </label><br><br>
-                <button name="create" type="submit">Creează</button>
+                <button class="btn btn-edit" name="create" type="submit">Creează</button>
             </form>
         <?php endif; ?>
+        </div>
 
         <h2>Lista utilizatorilor</h2>
         <ul>
         <?php foreach($users as $u): ?>
             <li>
                 <?php echo htmlspecialchars($u['username'],ENT_QUOTES,'UTF-8'); ?> - <?php echo htmlspecialchars($u['rol'],ENT_QUOTES,'UTF-8'); ?> - 
-                <a href="?edit=<?php echo $u['id_utilizator']; ?>">Modifică</a> - 
-                <a href="delete_user.php?id=<?php echo $u['id_utilizator']; ?>" onclick="return confirm('Ștergi utilizator?')">Șterge</a>
+                <a class="btn btn-edit" href="?edit=<?php echo $u['id_utilizator']; ?>">Modifică</a> - 
+                <a class="btn btn-delete" href="delete_user.php?id=<?php echo $u['id_utilizator']; ?>" onclick="return confirm('Ștergi utilizator?')">Șterge</a>
             </li>
         <?php endforeach; ?>
         </ul>
