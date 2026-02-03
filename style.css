@@ -1,54 +1,97 @@
-:root { --accent-color: #1b2733; }
+:root { --accent-color: #0073e6; --text-dark: #1b2733; --muted:#6b7280; }
 
+/* Reset / base */
+* { box-sizing: border-box; }
 body {
-    font-family: Arial, sans-serif;
+    font-family: Arial, Helvetica, sans-serif;
     line-height: 1.6;
     margin: 0;
     padding: 0;
-    background-color: #f5f5f5;
+    background-color: #f5f7fb;
+    color: var(--text-dark);
 }
 
-header {
-    background-color: #0073e6;
-    color: white;
-    padding: 10px 0;
-    text-align: center;
+/* Layout container used in header and main */
+.container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 16px;
 }
 
-nav a {
-    color: black;
-    margin: 0 15px;
+/* Header / navigation */
+.site-header {
+    background: var(--accent-color);
+    color: #fff;
+    padding: 14px 0;
+    box-shadow: 0 2px 6px rgba(11,35,71,0.06);
+}
+.site-header h1 {
+    margin: 0;
+    font-size: 22px;
+    font-weight: 700;
+}
+.main-nav {
+    margin-top: 8px;
+    display: flex;
+    gap: 18px;
+    flex-wrap: wrap;
+    align-items: center;
+}
+.main-nav a {
+    color: #ffffff;
     text-decoration: none;
+    padding: 6px 8px;
+    border-radius: 6px;
+    transition: background .15s ease, color .15s ease;
+    font-weight: 600;
+}
+.main-nav a:hover,
+.main-nav a:focus {
+    background: rgba(255,255,255,0.08);
+    outline: none;
 }
 
-main {
-    padding: 20px;
-    max-width: 800px;
+/* Main content area */
+main.container {
+    background: #fff;
     margin: 20px auto;
-    background-color: white;
-    box-shadow: 0 0 8px rgba(0,0,0,0.05);
-    padding-bottom: 40px; /* ensure main has spacing at bottom so content isn't hidden */
+    padding: 22px;
+    box-shadow: 0 6px 20px rgba(10,30,80,0.04);
+    border-radius: 8px;
 }
 
-footer {
-    background-color: #0073e6;
-    color: white;
-    text-align: center;
-    padding: 10px 0;
-    position: static; /* footer should be static to allow page scrolling */
-}
+h2, h3, h4 { color: var(--text-dark); }
+p { color: #344054; }
 
+/* Cards / lists */
 .anunt, .profesor {
-    padding: 10px;
-    border: 1px solid #ccc;
-    background-color: #eef;
-    margin-bottom: 10px;
+    padding: 12px;
+    border: 1px solid #e6eefc;
+    background-color: #fcfdff;
+    margin-bottom: 12px;
+    border-radius: 6px;
 }
 
+/* Utility messages */
 .errors { color: #b00020; }
 .success { color: #006600; }
 
-@media (max-width:600px) {
-    nav a { display:block; margin:6px 0; }
-    main { margin: 10px; }
+/* Footer */
+footer {
+    background-color: var(--accent-color);
+    color: white;
+    text-align: center;
+    padding: 12px 0;
+    position: static;
+}
+
+/* Responsive adjustments */
+@media (max-width: 800px) {
+    .main-nav { justify-content: center; gap:12px; }
+    main.container { margin: 12px; padding: 16px; }
+}
+
+@media (max-width: 480px) {
+    .site-header h1 { font-size: 18px; }
+    .main-nav { gap:8px; }
 }
