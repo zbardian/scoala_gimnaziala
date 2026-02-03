@@ -119,12 +119,17 @@ if ($res) while($p = mysqli_fetch_assoc($res)) $profesori[] = $p;
         </div>
 
         <h2>Lista profesorilor</h2>
-        <ul>
+        <ul class="admin-list">
         <?php foreach($profesori as $p): ?>
             <li>
-                <?php echo htmlspecialchars($p['nume'],ENT_QUOTES,'UTF-8'); ?> - <?php echo htmlspecialchars($p['disciplina'],ENT_QUOTES,'UTF-8'); ?> - <?php echo htmlspecialchars($p['email'],ENT_QUOTES,'UTF-8'); ?>
-                - <a class="btn btn-edit" href="?edit=<?php echo $p['id_profesor']; ?>">Modifică</a>
-                <?php if ($_SESSION['role'] === 'admin') { ?> | <a class="btn btn-delete" href="?delete=<?php echo $p['id_profesor']; ?>" onclick="return confirm('Ștergi profesor?')">Șterge</a> <?php } ?>
+                <div>
+                    <strong><?php echo htmlspecialchars($p['nume'],ENT_QUOTES,'UTF-8'); ?></strong><br>
+                    <span class="kv"><?php echo htmlspecialchars($p['disciplina'],ENT_QUOTES,'UTF-8'); ?><?php if($p['email']) echo ' · '.htmlspecialchars($p['email'],ENT_QUOTES,'UTF-8'); ?></span>
+                </div>
+                <div class="item-actions">
+                    <a class="btn btn-edit" href="?edit=<?php echo $p['id_profesor']; ?>">Modifică</a>
+                    <?php if ($_SESSION['role'] === 'admin') { ?> <a class="btn btn-delete" href="?delete=<?php echo $p['id_profesor']; ?>" onclick="return confirm('Ștergi profesor?')">Șterge</a> <?php } ?>
+                </div>
             </li>
         <?php endforeach; ?>
         </ul>

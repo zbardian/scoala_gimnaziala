@@ -156,12 +156,17 @@ if ($res) while($u = mysqli_fetch_assoc($res)) $users[] = $u;
         </div>
 
         <h2>Lista utilizatorilor</h2>
-        <ul>
+        <ul class="admin-list">
         <?php foreach($users as $u): ?>
             <li>
-                <?php echo htmlspecialchars($u['username'],ENT_QUOTES,'UTF-8'); ?> - <?php echo htmlspecialchars($u['rol'],ENT_QUOTES,'UTF-8'); ?> - 
-                <a class="btn btn-edit" href="?edit=<?php echo $u['id_utilizator']; ?>">Modifică</a> - 
-                <a class="btn btn-delete" href="delete_user.php?id=<?php echo $u['id_utilizator']; ?>" onclick="return confirm('Ștergi utilizator?')">Șterge</a>
+                <div>
+                    <strong><?php echo htmlspecialchars($u['username'],ENT_QUOTES,'UTF-8'); ?></strong><br>
+                    <span class="kv"><?php echo htmlspecialchars($u['rol'],ENT_QUOTES,'UTF-8'); ?></span>
+                </div>
+                <div class="item-actions">
+                    <a class="btn btn-edit" href="?edit=<?php echo $u['id_utilizator']; ?>">Modifică</a>
+                    <a class="btn btn-delete" href="delete_user.php?id=<?php echo $u['id_utilizator']; ?>" onclick="return confirm('Ștergi utilizator?')">Șterge</a>
+                </div>
             </li>
         <?php endforeach; ?>
         </ul>
