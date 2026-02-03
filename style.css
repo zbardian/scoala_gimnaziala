@@ -188,3 +188,15 @@ ul.admin-list li { display:flex; align-items:center; gap:12px; padding:10px; bor
     ul.admin-list li { flex-direction:column; align-items:stretch; }
     .item-actions { margin-left:0; margin-top:8px; justify-content:flex-start; }
 }
+
+/* Sidebar: ensure all text and links are white for contrast */
+.admin-sidebar, .admin-sidebar h3 {
+    color: #ffffff;
+}
+.admin-sidebar a {
+    color: #ffffff !important;
+}
+.admin-sidebar a:hover, .admin-sidebar a:focus {
+    color: #ffffff !important;
+    background: rgba(255,255,255,0.10);
+}
