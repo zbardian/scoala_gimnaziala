@@ -22,8 +22,8 @@ function is_admin() {
         <nav>
             <a href="/sg/index.php">Pagina principală</a> |
             <a href="adauga_anunt.php">Adaugă Anunț</a> |
-            <a href="modifica_anunt.php">Modifică Anunț</a> |
-            <a href="sterge_anunt.php">Șterge Anunț</a> |
+<!--            <a href="modifica_anunt.php">Modifică Anunț</a> |
+            <a href="sterge_anunt.php">Șterge Anunț</a> | -->
             <a href="profesori.php">Gestionează Profesori</a> |
             <?php if (is_admin()): ?>
                 <a href="users.php">Gestionează Utilizatori</a> |
