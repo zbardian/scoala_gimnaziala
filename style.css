@@ -239,3 +239,14 @@ section a, .announcements a {
 section a:hover, .announcements a:hover {
     text-decoration: underline;
 }
+
+/* Ensure no underline on admin lists (users, profesori) and form links */
+.admin-list a, .item-actions a, .stat-card a, .admin-content a {
+    text-decoration: none !important;
+}
+.admin-list a:hover, .item-actions a:hover, .stat-card a:hover, .admin-content a:hover,
+.admin-list a:focus, .item-actions a:focus, .stat-card a:focus, .admin-content a:focus {
+    text-decoration: none !important;
+    outline: 3px solid rgba(13,110,253,0.10);
+    outline-offset: 2px;
+}
