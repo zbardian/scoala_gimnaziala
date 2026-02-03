@@ -190,4 +190,11 @@ Notițe:
 - `db_init.sql` include date de test pentru profesori și anunțuri.
 - Dacă folosești autentificare ulterior, generează parole cu `password_hash()`.
 
+## Documentație completă
+Am extras documentația amplă din `proiect.txt` într-un fișier Markdown dedicat: `PROIECT.md`.
+- `PROIECT.md` conține varianta formatată a lucrării (introducere, analiză, proiectare, implementare, teste, concluzii și exemple de cod).
+- Fișierul original `proiect.txt` rămâne în repo pentru referință.
+
+Poți accesa documentația completă în: `PROIECT.md`.
+
 
