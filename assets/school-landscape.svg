@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 400" width="1200" height="400">
+  <rect width="100%" height="100%" fill="#e9f5ff" />
+  <!-- sun -->
+  <circle cx="1050" cy="70" r="40" fill="#FFD166" />
+  <!-- hills -->
+  <path d="M0 260 C150 180 350 220 600 260 C850 300 1000 220 1200 260 L1200 400 L0 400 Z" fill="#c6f6d5" />
+  <!-- school building -->
+  <g transform="translate(200,110)">
+    <rect x="0" y="70" width="220" height="140" rx="8" fill="#ffffff" stroke="#7aa2ff" stroke-width="4" />
+    <rect x="90" y="30" width="40" height="40" rx="6" fill="#7aa2ff" />
+    <rect x="30" y="100" width="50" height="60" fill="#7aa2ff" />
+    <rect x="140" y="100" width="50" height="60" fill="#7aa2ff" />
+    <path d="M-10 70 L110 0 L230 70 Z" fill="#7aa2ff" />
+    <text x="70" y="150" font-family="Arial" font-size="18" fill="#073763">Școala Gimnazială</text>
+  </g>
+  <!-- trees -->
+  <g fill="#2f855a">
+    <circle cx="480" cy="210" r="22" />
+    <rect x="470" y="220" width="18" height="30" fill="#8b5e3c" />
+    <circle cx="560" cy="200" r="26" />
+    <rect x="550" y="220" width="18" height="30" fill="#8b5e3c" />
+  </g>
+</svg>

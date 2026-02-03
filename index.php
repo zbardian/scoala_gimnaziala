@@ -7,6 +7,10 @@ include 'includes/header.php';
     <h2>Bine ați venit la Școala Gimnazială Locală!</h2>
     <p>Aici găsiți informații despre școală, cadre didactice și ultimele noutăți.</p>
 
+    <div style="margin:18px 0;">
+        <img src="/assets/school-landscape.svg" alt="Școală" style="width:100%;max-width:1100px;border-radius:8px;box-shadow:0 8px 20px rgba(10,30,80,0.06)">
+    </div>
+
     <!-- exemplu sectiune noutati scurte -->
     <section>
         <h3>Ultimele anunțuri</h3>
