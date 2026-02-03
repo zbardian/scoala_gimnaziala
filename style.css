@@ -91,18 +91,40 @@ footer {
 
 .announcements { list-style:none; padding:0; margin:0; display:flex; flex-direction:column; gap:10px; }
 .announcement-item {
-    display:flex; justify-content:space-between; align-items:flex-start;
-    gap:12px; padding:12px; border-radius:8px; background:#fff; border:1px solid #edf2f7;
+    display: flex;
+    justify-content: space-between;
+    align-items: center; /* center vertically */
+    gap: 12px;
+    padding: 12px;
+    border-radius: 8px;
+    background: #fff;
+    border: 1px solid #edf2f7;
 }
-.announcement-meta { color:#6b7280; font-size:13px; }
-.announcement-actions { display:flex; gap:8px; }
-.btn { padding:6px 10px; border-radius:6px; text-decoration:none; font-size:14px; }
-.btn-edit { background:#0d6efd; color:#fff; border:1px solid #0a58ca; }
-.btn-delete { background:#fff; color:#dc3545; border:1px solid #f5c6cb; }
-.btn:hover { filter:brightness(0.98); transform:translateY(-1px); }
+.announcement-item > div:first-child {
+    flex: 1 1 auto; /* allow content to take remaining space */
+}
+.announcement-actions {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    flex: 0 0 auto; /* keep actions compact */
+}
+.btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 12px; /* slightly larger for consistent height */
+    border-radius: 6px;
+    font-size: 14px;
+    line-height: 1;
+}
+.btn-edit, .btn-delete { white-space: nowrap; }
+
+/* Avoid large translate on hover so layout doesn't jump */
+.btn:hover { transform: translateY(-1px); box-shadow: 0 6px 12px rgba(10,50,100,0.06); }
 
 @media (max-width:700px) {
     .stat-card { min-width:120px; }
     .announcement-item { flex-direction:column; align-items:stretch; }
-    .announcement-actions { justify-content:flex-start; }
+    .announcement-actions { justify-content:flex-start; margin-top: 8px; }
 }
