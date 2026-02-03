@@ -126,6 +126,18 @@ footer {
 .btn { text-decoration:none; }
 .btn:focus { outline:3px solid rgba(13,110,253,0.15); outline-offset:2px; }
 
+/* Remove underline for links inside announcements and action buttons */
+.announcements a, .announcement-actions a, .admin-list a {
+    text-decoration: none;
+}
+.announcements a:hover, .announcement-actions a:hover, .admin-list a:hover {
+    text-decoration: none;
+}
+.announcement-actions a:focus, .announcements a:focus, .admin-list a:focus {
+    outline: 3px solid rgba(13,110,253,0.12);
+    outline-offset: 2px;
+}
+
 /* Avoid large translate on hover so layout doesn't jump */
 .btn:hover { transform: translateY(-1px); box-shadow: 0 6px 12px rgba(10,50,100,0.06); }
 
