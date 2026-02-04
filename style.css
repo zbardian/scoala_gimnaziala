@@ -11,6 +11,16 @@ body {
     color: var(--text);
 }
 
+/* Remove underline for all links across the site (frontend + admin) */
+/* keep focus outline for keyboard accessibility */
+a, a:link, a:visited, a:hover, a:active {
+    text-decoration: none;
+}
+a:focus {
+    outline: 3px solid rgba(0,115,230,0.15);
+    outline-offset: 2px;
+}
+
 /* Header / nav */
 .site-header {
     background: var(--accent);
