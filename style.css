@@ -105,8 +105,10 @@ footer { background:var(--accent); color:#fff; text-align:center; padding:12px 0
     gap: 12px;
     font-weight: 600;
     margin: 8px 0 6px;
+    text-align: right; /* right-align plain label text in the left grid cell */
 }
-.admin-content label br { display:none; } /* hide manual label line-breaks used in templates */
+.admin-content label br { display:none; }
+.admin-content label .label-text { text-align: right; justify-self: end; padding-right: 8px; }
 .admin-content input[type="text"],
 .admin-content input[type="password"],
 .admin-content input[type="email"],
@@ -119,10 +121,12 @@ footer { background:var(--accent); color:#fff; text-align:center; padding:12px 0
     background:#fbfdff;
     color:var(--text);
     box-sizing: border-box;
+    justify-self: start; /* ensure controls sit at left edge of right column */
 }
 .admin-content textarea { min-height:100px; }
 .admin-content .form-row { display:flex; gap:12px; }
 .admin-content .form-row > * { flex:1; }
+.admin-content .form-actions { display:flex; gap:8px; margin-top:8px; }
 
 /* Tables */
 .admin-content table { width:100%; border-collapse:collapse; margin:8px 0 12px; }
