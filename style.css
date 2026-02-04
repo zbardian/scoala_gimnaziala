@@ -87,7 +87,10 @@ footer { background:var(--accent); color:#fff; text-align:center; padding:12px 0
 
 /* Forms in admin */
 .admin-content form { display:flex; flex-direction:column; gap:10px; align-items:flex-start; }
-.admin-content label { display:block; font-weight:600; margin:8px 0 6px; text-align:left; width:100%; }
+.admin-content label { display:flex; align-items:center; gap:12px; font-weight:600; margin:8px 0 6px; width:100%; }
+.admin-content label br { display:none; } /* hide manual line breaks inside labels */
+.admin-content label textarea { align-self:flex-start; }
+
 .admin-content input[type="text"],
 .admin-content input[type="password"],
 .admin-content input[type="email"],
@@ -174,6 +177,9 @@ footer { background:var(--accent); color:#fff; text-align:center; padding:12px 0
     .announcement-actions { margin-top:8px; }
     .admin-list li { flex-direction:column; align-items:flex-start; }
     .admin-list li div { max-width:100%; }
+    /* On smaller screens stack label and input vertically */
+    .admin-content label { flex-direction:column; align-items:flex-start; }
+    .admin-content label br { display:block; }
 }
 
 @media (max-width:480px) {
