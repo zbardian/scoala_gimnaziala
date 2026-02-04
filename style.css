@@ -118,11 +118,58 @@ footer { background:var(--accent); color:#fff; text-align:center; padding:12px 0
 .admin-content .btn-primary { background:var(--accent); color:#fff; border:0; padding:8px 12px; border-radius:6px; }
 .admin-content .btn-secondary { background:#f1f5f9; color:var(--text); border:1px solid #e6eefc; }
 
+/* Admin pages: navigation, lists and stat-card form scoping */
+.admin-nav { display:flex; gap:12px; margin-bottom:14px; }
+.admin-nav a { color:var(--accent); text-decoration:none; font-weight:700; padding:6px 8px; border-radius:6px; background:transparent; }
+.admin-nav a:hover { background: rgba(0,115,230,0.06); }
+
+/* List of items in admin pages (profesori, users, announcements) */
+.admin-list { list-style:none; padding:0; margin:0; }
+.admin-list li {
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:12px;
+    border:1px solid #f1f5fb;
+    border-radius:8px;
+    margin-bottom:10px;
+    background:#fff;
+}
+.admin-list li div { max-width:72%; }
+.admin-list .kv { color:var(--muted); font-size:13px; }
+
+.item-actions { display:flex; gap:8px; align-items:center; }
+/* Scoped button styles for admin lists and forms (avoid touching frontend) */
+.stat-card .btn, .admin-list .btn, .item-actions .btn, .admin-nav .btn {
+    display:inline-block;
+    padding:7px 10px;
+    border-radius:6px;
+    text-decoration:none;
+    font-weight:600;
+    font-size:13px;
+}
+.stat-card .btn-edit, .admin-list .btn-edit, .item-actions .btn-edit { background:#e6f2ff; color:var(--accent); border:1px solid #cfe6ff; }
+.stat-card .btn-delete, .admin-list .btn-delete, .item-actions .btn-delete { background:#fff5f5; color:#b00020; border:1px solid #ffdede; }
+
+/* Inputs inside stat-card forms */
+.stat-card input[type="text"], .stat-card input[type="email"], .stat-card input[type="password"], .stat-card input[type="date"], .stat-card textarea, .stat-card select {
+    width:100%;
+    padding:8px 10px;
+    border:1px solid #dbe9ff;
+    border-radius:6px;
+    background:#fbfdff;
+    color:var(--text);
+    margin-top:6px;
+}
+.stat-card label { display:block; font-weight:600; margin-top:8px; }
+
 @media (max-width:800px) {
     .admin-layout { flex-direction:column; }
     .admin-sidebar { width:100%; }
     .announcement-item { flex-direction:column; align-items:flex-start; }
     .announcement-actions { margin-top:8px; }
+    .admin-list li { flex-direction:column; align-items:flex-start; }
+    .admin-list li div { max-width:100%; }
 }
 
 @media (max-width:480px) {
