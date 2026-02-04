@@ -96,28 +96,33 @@ footer { background:var(--accent); color:#fff; text-align:center; padding:12px 0
 .admin-content .card { background:#ffffff; border:1px solid #eef6ff; padding:14px; border-radius:8px; margin-bottom:12px; }
 
 /* Forms in admin */
-.admin-content form { display:flex; flex-direction:column; gap:10px; align-items:flex-start; }
-.admin-content label { display:flex; align-items:center; gap:12px; font-weight:600; margin:8px 0 6px; width:100%; }
-.admin-content label br { display:none; } /* hide manual line breaks inside labels */
-.admin-content label textarea { align-self:flex-start; }
-
+.admin-content form { display:block; gap:10px; }
+/* Labels aligned in a fixed column for consistent form alignment */
+.admin-content label {
+    display: grid;
+    grid-template-columns: 180px 1fr; /* fixed label column */
+    align-items: center;
+    gap: 12px;
+    font-weight: 600;
+    margin: 8px 0 6px;
+}
+.admin-content label br { display:none; } /* hide manual label line-breaks used in templates */
 .admin-content input[type="text"],
 .admin-content input[type="password"],
 .admin-content input[type="email"],
 .admin-content textarea,
 .admin-content select {
-    width:360px; /* compact width */
-    max-width:100%;
+    width:100%; /* fill the second column */
     padding:8px 10px;
     border:1px solid #dbe9ff;
     border-radius:6px;
     background:#fbfdff;
     color:var(--text);
-    display:block;
+    box-sizing: border-box;
 }
-.admin-content textarea { min-height:100px; width:560px; max-width:100%; }
-.admin-content .form-row { display:flex; gap:12px; flex-wrap:wrap; align-items:flex-start; }
-.admin-content .form-row > * { flex: 0 0 auto; }
+.admin-content textarea { min-height:100px; }
+.admin-content .form-row { display:flex; gap:12px; }
+.admin-content .form-row > * { flex:1; }
 
 /* Tables */
 .admin-content table { width:100%; border-collapse:collapse; margin:8px 0 12px; }
@@ -168,15 +173,13 @@ footer { background:var(--accent); color:#fff; text-align:center; padding:12px 0
 
 /* Compact inputs for stat-card (used on admin forms like add/edit) */
 .stat-card input[type="text"], .stat-card input[type="email"], .stat-card input[type="password"], .stat-card input[type="date"], .stat-card textarea, .stat-card select {
-    width:360px;
-    max-width:100%;
+    width:100%;
     padding:8px 10px;
     border:1px solid #dbe9ff;
     border-radius:6px;
     background:#fbfdff;
     color:var(--text);
     margin-top:6px;
-    display:block;
 }
 .stat-card label { display:block; font-weight:600; margin-top:8px; }
 
@@ -187,8 +190,8 @@ footer { background:var(--accent); color:#fff; text-align:center; padding:12px 0
     .announcement-actions { margin-top:8px; }
     .admin-list li { flex-direction:column; align-items:flex-start; }
     .admin-list li div { max-width:100%; }
-    /* On smaller screens stack label and input vertically */
-    .admin-content label { flex-direction:column; align-items:flex-start; }
+    /* On smaller screens stack label and input vertically (label above input) */
+    .admin-content label { grid-template-columns: 1fr; align-items:flex-start; }
     .admin-content label br { display:block; }
 }
 
