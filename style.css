@@ -86,23 +86,25 @@ footer { background:var(--accent); color:#fff; text-align:center; padding:12px 0
 .admin-content .card { background:#ffffff; border:1px solid #eef6ff; padding:14px; border-radius:8px; margin-bottom:12px; }
 
 /* Forms in admin */
-.admin-content form { display:block; gap:10px; }
-.admin-content label { display:block; font-weight:600; margin:8px 0 6px; }
+.admin-content form { display:flex; flex-direction:column; gap:10px; align-items:flex-start; }
+.admin-content label { display:block; font-weight:600; margin:8px 0 6px; text-align:left; width:100%; }
 .admin-content input[type="text"],
 .admin-content input[type="password"],
 .admin-content input[type="email"],
 .admin-content textarea,
 .admin-content select {
-    width:100%;
+    width:360px; /* compact width */
+    max-width:100%;
     padding:8px 10px;
     border:1px solid #dbe9ff;
     border-radius:6px;
     background:#fbfdff;
     color:var(--text);
+    display:block;
 }
-.admin-content textarea { min-height:100px; }
-.admin-content .form-row { display:flex; gap:12px; }
-.admin-content .form-row > * { flex:1; }
+.admin-content textarea { min-height:100px; width:560px; max-width:100%; }
+.admin-content .form-row { display:flex; gap:12px; flex-wrap:wrap; align-items:flex-start; }
+.admin-content .form-row > * { flex: 0 0 auto; }
 
 /* Tables */
 .admin-content table { width:100%; border-collapse:collapse; margin:8px 0 12px; }
@@ -151,15 +153,17 @@ footer { background:var(--accent); color:#fff; text-align:center; padding:12px 0
 .stat-card .btn-edit, .admin-list .btn-edit, .item-actions .btn-edit { background:#e6f2ff; color:var(--accent); border:1px solid #cfe6ff; }
 .stat-card .btn-delete, .admin-list .btn-delete, .item-actions .btn-delete { background:#fff5f5; color:#b00020; border:1px solid #ffdede; }
 
-/* Inputs inside stat-card forms */
+/* Compact inputs for stat-card (used on admin forms like add/edit) */
 .stat-card input[type="text"], .stat-card input[type="email"], .stat-card input[type="password"], .stat-card input[type="date"], .stat-card textarea, .stat-card select {
-    width:100%;
+    width:360px;
+    max-width:100%;
     padding:8px 10px;
     border:1px solid #dbe9ff;
     border-radius:6px;
     background:#fbfdff;
     color:var(--text);
     margin-top:6px;
+    display:block;
 }
 .stat-card label { display:block; font-weight:600; margin-top:8px; }
 
