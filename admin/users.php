@@ -171,7 +171,9 @@ if ($res) while($u = mysqli_fetch_assoc($res)) $users[] = $u;
         <?php endforeach; ?>
         </ul>
 
-        <p><a href="dashboard.php">Înapoi</a></p>
+        <div class="form-actions">
+            <a class="btn btn-secondary" href="dashboard.php">Înapoi</a>
+        </div>
     </main>
 </body>
 </html>

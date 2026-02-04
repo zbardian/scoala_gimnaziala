@@ -59,10 +59,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 <label>Titlu:<br><input name="titlu" value="<?php echo htmlspecialchars($anunt['titlu'],ENT_QUOTES,'UTF-8'); ?>" required></label><br><br>
                 <label>Conținut:<br><textarea name="continut" rows="8" required><?php echo htmlspecialchars($anunt['continut'],ENT_QUOTES,'UTF-8'); ?></textarea></label><br><br>
                 <label>Data publicare:<br><input type="date" name="data_publicare" value="<?php echo htmlspecialchars($anunt['data_publicare'],ENT_QUOTES,'UTF-8'); ?>"></label><br><br>
-                <button class="btn btn-edit" type="submit">Salvează</button>
-                <a class="btn" href="dashboard.php">Anulează</a>
-            </form>
-        </div>
-    </main>
-</body>
-</html>
+                <div class="form-actions">
+                    <button class="btn btn-primary" type="submit">Salvează</button>
+                    <a class="btn btn-secondary" href="dashboard.php">Anulează</a>
+                </div>
+             </form>
+         </div>
+     </main>
+ </body>
+ </html>

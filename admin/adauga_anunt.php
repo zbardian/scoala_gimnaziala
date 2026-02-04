@@ -50,10 +50,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 <label>Titlu:<br><input name="titlu" required></label><br><br>
                 <label>Conținut:<br><textarea name="continut" rows="8" required></textarea></label><br><br>
                 <label>Data publicare:<br><input type="date" name="data_publicare" value="<?php echo date('Y-m-d'); ?>"></label><br><br>
-                <button class="btn btn-edit" type="submit">Salvează</button>
-                <a class="btn" href="dashboard.php">Anulează</a>
-            </form>
-        </div>
-    </main>
-</body>
-</html>
+                <div class="form-actions">
+                    <button class="btn btn-primary" type="submit">Salvează</button>
+                    <a class="btn btn-secondary" href="dashboard.php">Anulează</a>
+                </div>
+             </form>
+         </div>
+     </main>
+ </body>
+ </html>
